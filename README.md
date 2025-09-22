@@ -21,19 +21,37 @@
 |   ├── selenium_tests/          # Selenium 기반 테스트 
 ├── .gitignore                   # 환경파일 및 캐시 제외
 └── README.md
-
 ```
 
 ---
 
 ## 3. 설치, 실행 방법
-```bash
-- **대상 서비스:** RealWorld (Conduit) - https://demo.realworld.io
-- **프론트엔드:** React + Redux
-  - https://github.com/gothinkster/react-redux-realworld-example-app
-- **백엔드:** Node.js + Express
-  - https://github.com/gothinkster/node-express-realworld-example-app
-  ```
+
+본 프로젝트는 **실제 서비스 서버(RealWorld Demo)** 를 대상으로 자동화 테스트를 수행하도록 설계되었습니다.  
+별도의 프론트엔드/백엔드 실행 환경을 포함하지 않고, 외부 제공되는 데모 서버에 테스트를 수행합니다.
+
+- **테스트 대상 서비스:** [RealWorld Demo (Conduit)](https://demo.realworld.io)
+- **프론트엔드 레퍼런스:** [react-redux-realworld-example-app](https://github.com/gothinkster/react-redux-realworld-example-app)
+- **백엔드 레퍼런스:** [node-express-realworld-example-app](https://github.com/gothinkster/node-express-realworld-example-app)
+
+### 로컬 실행 방법
+1. Python 환경 준비
+   ```bash
+   pip install selenium pytest
+   ```
+2. 원하는 테스트 프레임워크 선택 후 실행
+   # Selenuim (Pytest)
+   ```bash
+   pytest tests/selenium_tests/ -v
+   ```
+   # Robot Framework
+   ```bash
+   robot tests/robot_tests/
+   ```
+   # Playwright
+   ```bash
+   pytest tests/playwright_tests/ -v
+   ```
 
 ---
 
@@ -47,10 +65,36 @@
 ---
 
 ## 5. 예시 테스트 코드
+# Selenium (Pytest)
 ```bash
-#첫 번째 후기의 내용 가져오기
-first_review = review[0].get_attribute("innerHTML")
-assert "혼밥" in first_review, "❌ 후기가 정상적으로 작성되지 않았습니다."
-print("✅ 후기가 정상적으로 작성되었습니다.")
-time.sleep(1)
+#현재 URL이 게시글 상세 페이지인지 확인
+assert "/article/" in driver.current_url, "타인의 게시글 상세 페이지로 이동하지 못했습니다."
+
+#수정(Edit Article) 버튼이 없는지 확인
+assert not postpage.is_edit_article_button_visible(), "타인의 게시글에 'Edit Article' 버튼이 표시됩니다."
+    
+#삭제(Delete Article) 버튼이 없는지 확인
+assert not postpage.is_delete_article_button_visible(), "타인의 게시글에 'Delete Article' 버튼이 표시됩니다."
 ```
+# Robot Framework
+```bash
+타인의 게시글 수정/삭제 제한
+    [Documentation]    타인의 게시글을 수정/삭제할 수 없는지 확인합니다.
+    웹사이트 접속 및 로그인
+    글로벌 피드로 이동
+    다른 사용자의 게시글 찾아서 클릭
+    게시글 상세 화면에서 수정/삭제 버튼이 없는지 확인
+    [Teardown]    Close Browser
+```
+# Playwright
+```bash
+    #현재 URL이 게시글 상세 페이지인지 확인
+    expect(page).to_have_url(re.compile(r"/article/"))
+
+    #수정(Edit Article) 버튼이 없는지 확인
+    assert not postpage.is_edit_article_button_visible(), "타인의 게시글에 'Edit Article' 버튼이 표시됩니다."
+    
+    #삭제(Delete Article) 버튼이 없는지 확인
+    assert not postpage.is_delete_article_button_visible(), "타인의 게시글에 'Delete Article' 버튼이 표시됩니다."
+```
+

@@ -40,15 +40,15 @@
    pip install selenium pytest
    ```
 2. 원하는 테스트 프레임워크 선택 후 실행
-   # Selenuim (Pytest)
+   #### Selenuim (Pytest)
    ```bash
    pytest tests/selenium_tests/ -v
    ```
-   # Robot Framework
+   #### Robot Framework
    ```bash
    robot tests/robot_tests/
    ```
-   # Playwright
+   #### Playwright
    ```bash
    pytest tests/playwright_tests/ -v
    ```
@@ -65,7 +65,7 @@
 ---
 
 ## 5. 예시 테스트 코드
-# Selenium (Pytest)
+#### Selenium (Pytest)
 ```bash
 #현재 URL이 게시글 상세 페이지인지 확인
 assert "/article/" in driver.current_url, "타인의 게시글 상세 페이지로 이동하지 못했습니다."
@@ -76,7 +76,7 @@ assert not postpage.is_edit_article_button_visible(), "타인의 게시글에 'E
 #삭제(Delete Article) 버튼이 없는지 확인
 assert not postpage.is_delete_article_button_visible(), "타인의 게시글에 'Delete Article' 버튼이 표시됩니다."
 ```
-# Robot Framework
+#### Robot Framework
 ```bash
 타인의 게시글 수정/삭제 제한
     [Documentation]    타인의 게시글을 수정/삭제할 수 없는지 확인합니다.
@@ -86,7 +86,7 @@ assert not postpage.is_delete_article_button_visible(), "타인의 게시글에 
     게시글 상세 화면에서 수정/삭제 버튼이 없는지 확인
     [Teardown]    Close Browser
 ```
-# Playwright
+#### Playwright
 ```bash
     #현재 URL이 게시글 상세 페이지인지 확인
     expect(page).to_have_url(re.compile(r"/article/"))

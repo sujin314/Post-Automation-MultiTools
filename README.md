@@ -32,8 +32,8 @@
 
 - **테스트 대상 서비스:** [RealWorld Demo (Conduit)](https://demo.realworld.io)
 - **참고 레퍼런스**
--    Frontend: [react-redux-realworld-example-app](https://github.com/gothinkster/react-redux-realworld-example-app)
--    Backend: [node-express-realworld-example-app](https://github.com/gothinkster/node-express-realworld-example-app)
+   - Frontend: [react-redux-realworld-example-app](https://github.com/gothinkster/react-redux-realworld-example-app)
+   - Backend: [node-express-realworld-example-app](https://github.com/gothinkster/node-express-realworld-example-app)
 
 ### 로컬 실행 방법
 1. Python 환경 준비

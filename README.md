@@ -27,12 +27,13 @@
 
 ## 3. 설치, 실행 방법
 
-본 프로젝트는 **실제 서비스 서버(RealWorld Demo)** 를 대상으로 자동화 테스트를 수행하도록 설계되었습니다.  
+본 프로젝트는 **RealWorld Demo 서버 (Conduit)** 를 대상으로 자동화 테스트를 수행하도록 설계되었습니다.  
 별도의 프론트엔드/백엔드 실행 환경을 포함하지 않고, 외부 제공되는 데모 서버에 테스트를 수행합니다.
 
 - **테스트 대상 서비스:** [RealWorld Demo (Conduit)](https://demo.realworld.io)
-- **프론트엔드 레퍼런스:** [react-redux-realworld-example-app](https://github.com/gothinkster/react-redux-realworld-example-app)
-- **백엔드 레퍼런스:** [node-express-realworld-example-app](https://github.com/gothinkster/node-express-realworld-example-app)
+- **참고 레퍼런스**
+-    Frontend: [react-redux-realworld-example-app](https://github.com/gothinkster/react-redux-realworld-example-app)
+-    Backend: [node-express-realworld-example-app](https://github.com/gothinkster/node-express-realworld-example-app)
 
 ### 로컬 실행 방법
 1. Python 환경 준비
